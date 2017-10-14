@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  def current_seller
+    @current_seller ||= current_user.seller
+  end
+
   protected
 
     def configure_permitted_parameters

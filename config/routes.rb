@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :toys
   root "dashboard#index"
   get "dashboard/index"
   resources :sellers, except: :destroy

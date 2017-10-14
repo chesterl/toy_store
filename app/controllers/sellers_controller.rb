@@ -37,12 +37,10 @@ class SellersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_seller
       @seller = Seller.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def seller_params
       params.require(:seller).permit(:name, :user_id)
     end
