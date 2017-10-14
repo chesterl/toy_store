@@ -45,3 +45,6 @@ bower.json
 
 # VIM swp files
 *.swp
+
+# Ignore application configuration
+/config/application.yml

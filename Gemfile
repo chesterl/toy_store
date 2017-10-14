@@ -63,3 +63,4 @@ gem 'cloudinary'
 # Image upload
 gem 'carrierwave'
 
+gem 'figaro'
