@@ -12,6 +12,11 @@
   <strong>Description:</strong>
   <%= @toy.description %>
 </p>
+<% if @toy.image.present? %>
+  <p>
+  <%= image_tag(@toy.image_url(:standard), width: 200, height: 200) %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_toy_path(@toy) %> |
 <%= link_to 'Back', toys_path %>
