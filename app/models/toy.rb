@@ -1,6 +1,6 @@
 class Toy < ApplicationRecord
   belongs_to :seller
-  has_one :order
+  has_one :order, dependent: :destroy
   #alternate belongs_to :order
 
   validates :name, presence: true, length: { minimum: 5 }

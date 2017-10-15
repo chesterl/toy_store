@@ -1,0 +1,24 @@
+<h1>Message Inbox</h1>
+
+<%= link_to "Inbox", messages_path %>
+<%= link_to "Outbox", messages_path(sent: 1) %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= @sent.present? ? "To" : "From" %></th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= @sent.present? ? message.to.name : message.from.name %></td>
+        <td><%= message.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
