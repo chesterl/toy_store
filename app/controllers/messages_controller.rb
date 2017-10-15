@@ -15,6 +15,8 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        # Ideally move this to background
+        UserMailer.new_message(current_user.id, message_params[:to_id]).deliver
         format.html { redirect_to messages_path, notice: 'Message sucessfully sent!' }
       else
         format.html { render :new }
