@@ -39,7 +39,7 @@
     <% end %>
   <% end %>
 
-  <%= link_to "Send seller a message", new_message_path(to_id: @toy.seller), class: "btn btn-info" %>
+  <%= link_to "Send seller a message", new_message_path(to_id: @toy.seller.user), class: "btn btn-info" %>
 
 <%= link_to 'Edit', edit_toy_path(@toy) %> |
 <%= link_to 'Back', toys_path %>

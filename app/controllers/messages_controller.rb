@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :load_seller, only: :create
-  before_action :redirect_if_seller_missing, only: :new
+  before_action :load_user, only: [:new, :create]
+  # before_action :redirect_if_user_missing, only: :new
 
   def index
     @messages = load_messages.includes(:from, :to)
@@ -31,14 +31,11 @@ class MessagesController < ApplicationController
       params.require(:message).permit(:to_id, :content)
     end
 
-    def load_seller
-      @seller = Seller.find(message_params[:to_id])
-    end
+    def load_user
+      to_id = params[:to_id] || message_params[:to_id]
+      @user = User.find_by(id: to_id)
 
-    def redirect_if_seller_missing
-      @seller = Seller.find(params[:to_id])
-
-      return redirect_to messages_path unless @seller.present?
+      return redirect_to messages_path unless @user.present?
     end
 
     def load_messages

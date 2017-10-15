@@ -17,6 +17,9 @@
       <tr>
         <td><%= @sent.present? ? message.to.name : message.from.name %></td>
         <td><%= message.content %></td>
+        <% if @sent.blank? %>
+          <td><%= link_to "Reply message", new_message_path(to_id: message.from.id ) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
