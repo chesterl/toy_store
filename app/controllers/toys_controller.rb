@@ -52,10 +52,6 @@ class ToysController < ApplicationController
     end
   end
 
-  def search
-    search_terms
-  end
-
   private
 
     def set_toy

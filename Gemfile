@@ -41,6 +41,11 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # Rspec over miniest X_X
+  gem 'rspec-rails'
+  # Help create records for testing
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -70,4 +75,4 @@ gem 'aasm'
 # Authorization for admin users
 gem 'cancancan'
 # Creating different roles for users
-gem "rolify"
+gem 'rolify'

@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   get "/do_crazy_things", to: "admin#do_crazy_things"
   resources :orders, only: [:index, :show, :create]
   get "/sales", to: "orders#sales"
-  resources :toys do
-    get "search", on: :collection
-  end
+  resources :toys
   root "dashboard#index"
   get "dashboard/index"
   resources :sellers, except: :destroy
