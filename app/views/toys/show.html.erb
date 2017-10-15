@@ -19,6 +19,14 @@
     </p>
   <% end %>
 
+  <% #TODO: only show if not seller %>
+  <%= form_for(@order) do |f| %>
+    <%= f.hidden_field :toy_id, value: @toy.id %>
+    <div class="form-actions">
+      <%= f.submit "Buy", class: "btn btn-info" %>
+    </div>
+  <% end %>
+
 <%= link_to 'Edit', edit_toy_path(@toy) %> |
 <%= link_to 'Back', toys_path %>
 </div>

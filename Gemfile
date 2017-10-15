@@ -57,10 +57,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Authentication
 gem 'devise'
-
 # Image hosting
 gem 'cloudinary'
 # Image upload
 gem 'carrierwave'
-
+# Store env variables
 gem 'figaro'
+# Process user payments
+gem 'stripe'

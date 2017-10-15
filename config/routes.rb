@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders, only: [:index, :show, :create]
   resources :toys do
     get "search", on: :collection
   end

@@ -1,5 +1,7 @@
 class Toy < ApplicationRecord
   belongs_to :seller
+  has_one :order
+  #alternate belongs_to :order
 
   validates :name, presence: true, length: { minimum: 5 }
   validates :price, presence: true, numericality: { greater_than: 1 }
