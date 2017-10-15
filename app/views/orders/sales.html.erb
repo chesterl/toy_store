@@ -1,4 +1,4 @@
-<h1>Purchases</h1>
+<h1>Sales</h1>
 
 <% if @orders.present? %>
 <table>
@@ -25,6 +25,6 @@
   </tbody>
 </table>
 <% else %>
-  <p>You have no purchases. Maybe you should go buy some toys eh? </p>
+  <p>You have no sales. <%= link_to "Let's list some toys for sale!", new_toy_path %></p>
 <% end %>
 

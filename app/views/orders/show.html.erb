@@ -1,11 +1,11 @@
 <p>
-  <strong>User:</strong>
-  <%= @order.user %>
+  <strong>Purchased By</strong>
+  <%= @order.user.name %>
 </p>
 
 <p>
-  <strong>Seller:</strong>
-  <%= @order.seller %>
+  <strong>Sold by:</strong>
+  <%= @order.seller.name %>
 </p>
 
 <%= link_to 'Back', orders_path %>

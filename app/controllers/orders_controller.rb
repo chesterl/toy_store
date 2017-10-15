@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all
+    @orders = current_user.orders.includes(:toy)
+  end
+
+  def sales
+    @orders = current_seller.orders
   end
 
   def show
