@@ -20,24 +20,23 @@
   <% end %>
 
   <% #TODO: only show if not seller %>
-  <%= form_for(@order) do |f| %>
-    <%= f.hidden_field :toy_id, value: @toy.id %>
-    <article>
-      <% if flash[:error].present? %>
-        <div id="error_explanation">
-          <p><%= flash[:error] %></p>
-        </div>
-      <% end %>
-      <label class="amount">
-        <span>Amount: $<%= @toy.price %></span>
-      </label>
-    </article>
+  <% if @toy.active? %>
+    <%= form_for(@order) do |f| %>
+      <%= f.hidden_field :toy_id, value: @toy.id %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+      </article>
 
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                                          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                                                          data-description=<%= "Paying for toy #{@toy.name}" %>
-                                                        data-amount=<%= @toy.price %>
-                                                        data-locale="auto"></script>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                                            data-description=<%= "Paying for toy #{@toy.name}" %>
+                                                          data-amount=<%= @toy.price_in_cents %>
+                                                          data-locale="auto"></script>
+    <% end %>
   <% end %>
 
 <%= link_to 'Edit', edit_toy_path(@toy) %> |

@@ -13,4 +13,19 @@ class Toy < ApplicationRecord
   scope :description_contains, -> (description) { where("description like ?", "%#{description}%")}
   scope :price_greater_than, -> (price) { where("price > ?", price) }
   scope :price_less_than, -> (price) { where("price < ?", price) }
+
+  include AASM
+
+  aasm :column => 'state' do
+    state :active, initial: true
+    state :sold
+
+    event :sell do
+      transitions :from => :active, :to => :sold
+    end
+  end
+
+  def price_in_cents
+    (price * 100).to_i
+  end
 end

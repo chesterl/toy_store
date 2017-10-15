@@ -5,7 +5,7 @@ class ToysController < ApplicationController
   # user can access show
   #TODO: items for sale
   def index
-    @toys = Toy.where(nil)
+    @toys = Toy.active.where(nil)
 
     #TODO: Make search and filter work together
     search_results if search_keywords

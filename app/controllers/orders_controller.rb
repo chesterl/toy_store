@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   def create
     toy = Toy.find(order_params[:toy_id])
 
-    @amount = (toy.price * 100).to_i
+    @amount = toy.price_in_cents
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -26,13 +26,15 @@ class OrdersController < ApplicationController
     )
 
     # TODO: rescue failure if order fails to save
-    @order = current_user.orders.build(toy: toy, seller: toy.seller)
+    Order.transaction do
+      @order = current_user.orders.build(toy: toy, seller: toy.seller)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: "You have successfuly purchased the toy!" }
-      else
-        format.html { render :new }
+      respond_to do |format|
+        if toy.sell! && @order.save
+          format.html { redirect_to @order, notice: "You have successfuly purchased the toy!" }
+        else
+          format.html { render :new }
+        end
       end
     end
   rescue Stripe::CardError => e

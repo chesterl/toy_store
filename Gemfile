@@ -65,3 +65,5 @@ gem 'carrierwave'
 gem 'figaro'
 # Process user payments
 gem 'stripe'
+# State machine for tracking state
+gem 'aasm'
