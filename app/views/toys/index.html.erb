@@ -1,33 +1,53 @@
-<p id="notice"><%= notice %></p>
-
+<div class="col-xs-12">
 <h1>Toys</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Seller</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @toys.each do |toy| %>
+<div class="col-xs-3">
+<%= form_tag toys_path, method: :get, class: "form-horizontal" do  %>
+  <div class="form-group">
+    <div class="col-xs-6">
+      <%= label_tag "Min Price $" %>
+      <%= text_field_tag :min_price, @filter_options[:min_price], placeholder: "5", class: "form-control" %>
+    </div>
+    <div class="col-xs-6">
+      <%= label_tag "Max Price $" %>
+      <%= text_field_tag :max_price, @filter_options[:max_price], placeholder: "1000", class: "form-control" %>
+    </div>
+    <div class="col-xs-3">
+      <%= submit_tag "Filter", class: "btn btn-small" %>
+    </div>
+  </div>
+<% end %>
+</div>
+<div class="col-xs-8">
+  <table>
+    <thead>
       <tr>
-        <td><%= toy.name %></td>
-        <td><%= toy.price %></td>
-        <td><%= toy.description %></td>
-        <td><%= toy.seller %></td>
-        <td><%= link_to 'Show', toy %></td>
-        <td><%= link_to 'Edit', edit_toy_path(toy) %></td>
-        <td><%= link_to 'Destroy', toy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Seller</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @toys.each do |toy| %>
+        <tr>
+          <td><%= toy.name %></td>
+          <td><%= toy.price %></td>
+          <td><%= toy.description %></td>
+          <td><%= toy.seller %></td>
+          <td><%= link_to 'Show', toy %></td>
+          <td><%= link_to 'Edit', edit_toy_path(toy) %></td>
+          <td><%= link_to 'Destroy', toy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Toy', new_toy_path %>
+  <br>
+
+  <%= link_to 'New Toy', new_toy_path %>
+</div>
+
+</div>

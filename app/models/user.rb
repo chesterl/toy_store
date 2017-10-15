@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_one :seller
 
+  validates :email, presence: true, uniqueness: true
+  validates :name, presence: true
+
   def is_a_seller?
     seller.present? && seller.persisted?
   end

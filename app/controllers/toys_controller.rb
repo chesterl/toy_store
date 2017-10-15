@@ -5,7 +5,11 @@ class ToysController < ApplicationController
   # user can access show
   #TODO: items for sale
   def index
-    @toys = Toy.all
+    @toys = Toy.where(nil)
+
+    #TODO: Make search and filter work together
+    search_results if search_keywords
+    add_filters if filters?
   end
 
   def show
@@ -33,7 +37,7 @@ class ToysController < ApplicationController
   def update
     respond_to do |format|
       if @toy.update(toy_params)
-        format.html { redirect_to @toy, notice: 'Toy was successfully updated.' }
+        format.html { redirect_to @toy, notice: 'Listing was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -43,16 +47,51 @@ class ToysController < ApplicationController
   def destroy
     @toy.destroy
     respond_to do |format|
-      format.html { redirect_to toys_url, notice: 'Toy was successfully destroyed.' }
+      format.html { redirect_to toys_url, notice: 'Listing was successfully destroyed.' }
     end
   end
 
+  def search
+    search_terms
+  end
+
   private
+
     def set_toy
       @toy = Toy.find(params[:id])
     end
 
     def toy_params
       params.require(:toy).permit(:name, :price, :description, :image)
+    end
+
+    #TODO: Refactor out search and filtering
+    def search_params
+      params.permit(:search_terms)
+    end
+
+    def search_keywords
+      @search_keywords ||= search_params[:search_terms]
+    end
+
+    def search_results
+      @toys = @toys.name_like(search_keywords).or(@toys.description_contains(search_keywords))
+    end
+
+    def filter_results
+      params.permit(:min_price, :max_price)
+    end
+
+    def filter_options
+      @filter_options ||= filter_results
+    end
+
+    def add_filters
+      @toys = @toys.price_less_than(filter_results[:max_price]) if filter_results[:max_price].present?
+      @toys = @toys.price_greater_than(filter_results[:min_price]) if filter_results[:min_price].present?
+    end
+
+    def filters?
+      filter_options.any? { |k,v| k.present? && v.present? }
     end
 end

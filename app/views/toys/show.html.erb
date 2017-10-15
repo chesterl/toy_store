@@ -1,22 +1,25 @@
-<p>
+<div class="col-xs-12">
+  <p>
   <strong>Name:</strong>
   <%= @toy.name %>
-</p>
+  </p>
 
-<p>
+  <p>
   <strong>Price:</strong>
   <%= number_to_currency(@toy.price) %>
-</p>
+  </p>
 
-<p>
+  <p>
   <strong>Description:</strong>
   <%= @toy.description %>
-</p>
-<% if @toy.image.present? %>
-  <p>
-  <%= image_tag(@toy.image_url(:standard), width: 200, height: 200) %>
   </p>
-<% end %>
+  <% if @toy.image.present? %>
+    <p>
+    <%= image_tag(@toy.image_url(:standard), width: 200, height: 200) %>
+    </p>
+  <% end %>
 
 <%= link_to 'Edit', edit_toy_path(@toy) %> |
 <%= link_to 'Back', toys_path %>
+</div>
+
