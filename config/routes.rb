@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/crazy_things", to: "admin#crazy_things"
+  get "/do_crazy_things", to: "admin#do_crazy_things"
   resources :orders, only: [:index, :show, :create]
   resources :toys do
     get "search", on: :collection

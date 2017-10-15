@@ -67,3 +67,7 @@ gem 'figaro'
 gem 'stripe'
 # State machine for tracking state
 gem 'aasm'
+# Authorization for admin users
+gem 'cancancan'
+# Creating different roles for users
+gem "rolify"
