@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ToyStore</title>
+    <title>Toytastic</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,11 +10,15 @@
 
   <body>
     <%= render "shared/navbar" %>
+    <%= flash_messages %>
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= render "shared/search" %>
-      <%= yield %>
+      <% if user_signed_in? %>
+        <%= render "shared/search" %>
+      <% end %>
+
+      <div class="col-xs-12">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

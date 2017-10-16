@@ -4,34 +4,34 @@
       <h2><%= pluralize(toy.errors.count, "error") %> prohibited this toy from being saved:</h2>
 
       <ul>
-      <% toy.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% toy.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "Hot Wheels Set", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price, placeholder: 0, step: 0.01 %>
+  <div class="form-group">
+    <%= f.label "Price $" %>
+    <%= f.number_field :price, placeholder: 0, step: 0.01, class: "form-control"  %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, placeholder: "Minimum: 30 characters", rows: 10, class: "form-control"  %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", class: "btn btn-success" %>
   </div>
 <% end %>

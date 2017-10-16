@@ -19,7 +19,7 @@
         <% end %>
         <% if user_signed_in? %>
           <% unless current_user.is_a_seller? %>
-            <li><%= link_to "Become a Seller", new_seller_path, class: "btn-info btn-small" %></li>
+            <li class="become-seller"><%= link_to "Become a Seller", new_seller_path %></li>
           <% else %>
             <li><%= link_to "List a Toy", new_toy_path %></li>
           <% end %>

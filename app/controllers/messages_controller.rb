@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   before_action :load_user, only: [:new, :create]
-  # before_action :redirect_if_user_missing, only: :new
 
   def index
     @messages = load_messages.includes(:from, :to)

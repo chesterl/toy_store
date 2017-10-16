@@ -28,4 +28,8 @@ class Toy < ApplicationRecord
   def price_in_cents
     (price * 100).to_i
   end
+
+  def is_owner?(user)
+    (seller.user == user)
+  end
 end
