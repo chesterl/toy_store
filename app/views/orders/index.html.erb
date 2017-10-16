@@ -1,7 +1,7 @@
 <h1>Purchases</h1>
 
 <% if @orders.present? %>
-<table>
+<table class="table table-striped table-responsive">
   <thead>
     <tr>
       <th>Order #</th>
@@ -19,7 +19,7 @@
         <td><%= order.created_at.strftime("%B %d, %Y") %></td>
         <td><%= order.toy.name %></td>
         <td><%= order.toy.price %></td>
-        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'View Toy', toy_path(order.toy) %></td>
       </tr>
     <% end %>
   </tbody>

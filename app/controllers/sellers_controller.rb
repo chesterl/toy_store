@@ -2,11 +2,11 @@ class SellersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_seller, only: [:show, :edit, :update]
 
-  def show
-  end
-
   def new
-    redirect :back if current_user.is_a_seller?
+    if current_user.is_a_seller?
+      flash[:error] = "You're already a seller"
+      return redirect_to root_path
+    end
 
     @seller = Seller.new
   end

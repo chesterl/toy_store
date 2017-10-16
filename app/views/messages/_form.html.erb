@@ -11,23 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <p>From:<br>
-    <%= current_user.name %>
+  <div class="form-group">
+    <p><strong>From:</strong>
+    <%= current_user.name %></p>
   </div>
 
-  <div class="field">
-    <p>To:<br>
+  <div class="form-group">
+    <p><strong>To:</strong>
     <%= @user.name %>
     <%= f.hidden_field :to_id, value: @user.id %>
+    </p>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :message %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, rows: 10, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Send", class: "pull-right btn btn-info" %>
   </div>
 <% end %>

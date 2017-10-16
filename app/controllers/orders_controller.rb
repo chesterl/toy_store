@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
 
       respond_to do |format|
         if toy.sell! && @order.save
-          format.html { redirect_to @order, notice: "You have successfuly purchased the toy!" }
+          format.html { redirect_to orders_path, notice: "You have successfuly purchased the toy!" }
         else
           format.html { render :new }
         end
