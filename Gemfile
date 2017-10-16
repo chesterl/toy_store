@@ -79,4 +79,4 @@ gem 'rolify'
 # Google maps and geocoding
 gem 'geocoder' 
 gem 'gmaps4rails' 
-gem 'underscore'
+gem 'underscore-rails'
