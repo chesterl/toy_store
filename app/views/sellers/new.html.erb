@@ -1,26 +1,5 @@
 <div class="col-xs-12 col-md-6">
   <h1>Become a Seller now!</h1>
 
-  <%= form_for(@seller) do |f| %>
-    <% if @seller.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@seller.errors.count, "error") %> prohibited this seller from being saved:</h2>
-
-        <ul>
-          <% @seller.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= f.label "What name do you want for your seller account?" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.submit "Let's go", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+  <%= render 'form', seller: @seller %>
 </div>

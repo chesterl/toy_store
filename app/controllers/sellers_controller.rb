@@ -29,7 +29,7 @@ class SellersController < ApplicationController
   def update
     respond_to do |format|
       if @seller.update(seller_params)
-        format.html { redirect_to @seller, notice: 'Seller was successfully updated.' }
+        format.html { redirect_to edit_seller_path(@seller), notice: 'Seller was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -42,6 +42,6 @@ class SellersController < ApplicationController
     end
 
     def seller_params
-      params.require(:seller).permit(:name, :user_id)
+      params.require(:seller).permit(:name, :street, :state, :suburb, :postcode, :country)
     end
 end

@@ -29,10 +29,9 @@
           <ul class="dropdown-menu">
             <% if current_user.is_a_seller? %>
               <li><%= link_to "Seller Profile", edit_seller_path(current_user.seller) %></li>
+              <li><%= link_to "Sales", sales_path %></li>
             <% end %>
-            <li role="separator" class="divider"></li>
           <li><%= link_to "Purchases", orders_path %></li>
-          <li><%= link_to "Sales", sales_path %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>

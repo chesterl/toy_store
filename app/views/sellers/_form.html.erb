@@ -12,8 +12,33 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %>
+    <%= f.label "Name" %>
     <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :street %>
+    <%= f.text_field :street, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :suburb %>
+    <%= f.text_field :suburb, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :postcode %>
+    <%= f.number_field :postcode, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :state %>
+    <%= f.select(:state, ['NSW', 'QLD', 'SA', 'VIC', 'NT', 'WA', 'ACT'], {}, class: "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :country %>
+    <%= f.select(:country, ['Australia'], {}, class: "form-control") %>
   </div>
 
   <div class="form-group">

@@ -76,3 +76,7 @@ gem 'aasm'
 gem 'cancancan'
 # Creating different roles for users
 gem 'rolify'
+# Google maps and geocoding
+gem 'geocoder' 
+gem 'gmaps4rails' 
+gem 'underscore'
