@@ -11,8 +11,8 @@ class Toy < ApplicationRecord
 
   scope :name_like, -> (name) { where("name like ?", "%#{name}%")}
   scope :description_contains, -> (description) { where("description like ?", "%#{description}%")}
-  scope :price_greater_than, -> (price) { where("price > ?", price) }
-  scope :price_less_than, -> (price) { where("price < ?", price) }
+  scope :price_greater_than, -> (price) { where("price >= ?", price) }
+  scope :price_less_than, -> (price) { where("price <= ?", price) }
 
   include AASM
 
