@@ -1,4 +1,9 @@
 describe ToysController, type: :request do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
 
   describe "Viewing all toys" do
     context "without search params" do
@@ -20,7 +25,6 @@ describe ToysController, type: :request do
 
   describe "Viewing an individual toy" do
     let(:toy) { create(:toy, seller: seller) }
-    let(:user) { create(:user) }
     let(:seller) { create(:seller) }
 
     it "renders successfully" do
@@ -40,7 +44,6 @@ describe ToysController, type: :request do
 
   describe "Editing an existing toy" do
     let(:toy) { create(:toy, seller: seller) }
-    let(:user) { create(:user) }
     let(:seller) { create(:seller) }
 
     it "renders successfully" do
@@ -56,11 +59,6 @@ describe ToysController, type: :request do
     let(:price) { 5.00 }
     let(:description) { Faker::Lorem.paragraph(4) }
     let!(:seller) { create(:seller, user: user) }
-    let!(:user) { create(:user) }
-
-    before do
-      sign_in user
-    end
 
     it "redirects successfully" do
       post toys_path, params
@@ -76,7 +74,6 @@ describe ToysController, type: :request do
   describe "Updates an existing toy" do
     let!(:toy) { create(:toy, seller: seller) }
     let(:seller) { create(:seller, user: user) }
-    let(:user) { create(:user) }
     let(:params) { { toy: { name: "New name" } } }
 
     it "updates and redirects successfully" do
@@ -92,7 +89,6 @@ describe ToysController, type: :request do
   describe "Deletes the toy listing" do
     let!(:toy) { create(:toy, seller: seller) }
     let(:seller) { create(:seller, user: user) }
-    let(:user) { create(:user) }
 
     it "removes a toy record" do
       aggregate_failures do
