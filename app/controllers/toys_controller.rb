@@ -48,7 +48,7 @@ class ToysController < ApplicationController
   def destroy
     @toy.destroy
     respond_to do |format|
-      format.html { redirect_to toys_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to toys_url, notice: 'Toy was successfully deleted.' }
     end
   end
 
